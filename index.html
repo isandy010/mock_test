@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSC 12th Grade Maths Mock Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .timer {
+            font-size: 1.2em;
+            color: red;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        .correct {
+            color: green;
+        }
+        .wrong {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HSC 12th Grade Maths Mock Test</h1>
+        <div class="timer" id="timer">Time Left: 30:00</div>
+        <form id="mockTest">
+            <!-- 25 Questions -->
+            <div class="question">
+                <label>1. Solve: \( x^2 + 2x - 8 = 0 \). What are the roots?</label><br>
+                <input type="text" name="q1">
+            </div>
+            <div class="question">
+                <label>2. Find the derivative of \( 3x^2 + 2x + 1 \).</label><br>
+                <input type="text" name="q2">
+            </div>
+            <div class="question">
+                <label>3. Evaluate \( \int x^2 dx \).</label><br>
+                <input type="text" name="q3">
+            </div>
+            <div class="question">
+                <label>4. Solve for \( x \): \( 2x + 5 = 15 \).</label><br>
+                <input type="text" name="q4">
+            </div>
+            <div class="question">
+                <label>5. Simplify: \( (a+b)^2 \).</label><br>
+                <input type="text" name="q5">
+            </div>
+            <div class="question">
+                <label>6. Find the slope of the line \( y = 3x + 7 \).</label><br>
+                <input type="text" name="q6">
+            </div>
+            <div class="question">
+                <label>7. Calculate \( 2^5 \).</label><br>
+                <input type="text" name="q7">
+            </div>
+            <div class="question">
+                <label>8. Factorize \( x^2 - 9 \).</label><br>
+                <input type="text" name="q8">
+            </div>
+            <div class="question">
+                <label>9. Evaluate \( \lim_{x \to 0} \frac{\sin x}{x} \).</label><br>
+                <input type="text" name="q9">
+            </div>
+            <div class="question">
+                <label>10. Solve for \( x \): \( x/3 + 4 = 7 \).</label><br>
+                <input type="text" name="q10">
+            </div>
+            <div class="question">
+                <label>11. Expand: \( (x+1)^3 \).</label><br>
+                <input type="text" name="q11">
+            </div>
+            <div class="question">
+                <label>12. Differentiate \( \sin x \).</label><br>
+                <input type="text" name="q12">
+            </div>
+            <div class="question">
+                <label>13. Find the area of a circle with radius 7.</label><br>
+                <input type="text" name="q13">
+            </div>
+            <div class="question">
+                <label>14. Solve for \( x \): \( 3x - 2 = 13 \).</label><br>
+                <input type="text" name="q14">
+            </div>
+            <div class="question">
+                <label>15. Simplify: \( \frac{4x^2}{2x} \).</label><br>
+                <input type="text" name="q15">
+            </div>
+            <div class="question">
+                <label>16. Evaluate \( \int e^x dx \).</label><br>
+                <input type="text" name="q16">
+            </div>
+            <div class="question">
+                <label>17. Solve for \( x \): \( x^2 = 49 \).</label><br>
+                <input type="text" name="q17">
+            </div>
+            <div class="question">
+                <label>18. Differentiate \( \ln x \).</label><br>
+                <input type="text" name="q18">
+            </div>
+            <div class="question">
+                <label>19. Find the value of \( \cos 0 \).</label><br>
+                <input type="text" name="q19">
+            </div>
+            <div class="question">
+                <label>20. Solve: \( 5x - 15 = 0 \).</label><br>
+                <input type="text" name="q20">
+            </div>
+            <div class="question">
+                <label>21. Expand: \( (x-3)^2 \).</label><br>
+                <input type="text" name="q21">
+            </div>
+            <div class="question">
+                <label>22. Evaluate \( \int \frac{1}{x} dx \).</label><br>
+                <input type="text" name="q22">
+            </div>
+            <div class="question">
+                <label>23. Solve for \( x \): \( x + 7 = 10 \).</label><br>
+                <input type="text" name="q23">
+            </div>
+            <div class="question">
+                <label>24. Find the value of \( \tan(\pi/4) \).</label><br>
+                <input type="text" name="q24">
+            </div>
+            <div class="question">
+                <label>25. Differentiate \( x^3 \).</label><br>
+                <input type="text" name="q25">
+            </div>
+
+            <button type="button" onclick="submitTest()">Submit Test</button>
+        </form>
+
+        <div id="result" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        const answers = {
+            q1: "2, -4",
+            q2: "6x + 2",
+            q3: "x^3/3 + C",
+            q4: "5",
+            q5: "a^2 + 2ab + b^2",
+            q6: "3",
+            q7: "32",
+            q8: "(x - 3)(x + 3)",
+            q9: "1",
+            q10: "9",
+            q11: "x^3 + 3x^2 + 3x + 1",
+            q12: "cos x",
+            q13: "154",
+            q14: "5",
+            q15: "2x",
+            q16: "e^x + C",
+            q17: "7, -7",
+            q18: "1/x",
+            q19: "1",
+            q20: "3",
+            q21: "x^2 - 6x + 9",
+            q22: "ln|x| + C",
+            q23: "3",
+            q24: "1",
+            q25: "3x^2",
+        };
+
+        let timer = 30 * 60; // 30 minutes in seconds
+        const timerElement = document.getElementById("timer");
+
+        function startTimer() {
+            const interval = setInterval(() => {
+                if (timer <= 0) {
+                    clearInterval(interval);
+                    alert("Time is up! Submitting the test automatically.");
+                    submitTest();
+                } else {
+                    const minutes = Math.floor(timer / 60);
+                    const seconds = timer % 60;
+                    timerElement.textContent = `Time Left: ${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+                    timer--;
+                }
+            }, 1000);
+        }
+
+        function submitTest() {
+            const form = document.getElementById("mockTest");
+            const resultDiv = document.getElementById("result");
+            resultDiv.style.display = "block";
+            resultDiv.innerHTML = "<h2>Test Results</h2>";
+
+            let score = 0;
+            let total = 0;
+
+            for (let question in answers) {
+                const userAnswer = form[question].value.trim();
+                const correctAnswer = answers[question];
+                total++;
+
+                if (userAnswer === correctAnswer) {
+                    resultDiv.innerHTML += `<p class='correct'>${question}: Correct!</p>`;
+                    score++;
+                } else {
+                    resultDiv.innerHTML += `<p class='wrong'>${question}: Wrong! Correct answer is ${correctAnswer}.</p>`;
+                }
+            }
+
+            resultDiv.innerHTML += `<h3>Score: ${score} / ${total}</h3>`;
+            form.style.display = "none";
+        }
+
+        startTimer();
+    </script>
+</body>
+</html>
